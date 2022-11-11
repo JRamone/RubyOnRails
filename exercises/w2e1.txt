@@ -1,0 +1,74 @@
+irb(main):001:0> b = Brewery.create name:"Brewdog", year: 2007
+=> 
+#<Beer:0x00007fa4254361f8                                                      
+...                                                                            
+irb(main):004:0> k1.errors
+=> #<ActiveModel::Errors [#<ActiveModel::Error attribute=brewery, type=blank, options={:message=>:required}>]>                                                                         
+irb(main):005:0> k1.brewery= b
+=> 
+#<Brewery:0x00007fa426203ee8                                                   
+...                                                                            
+irb(main):006:0> k1.errors
+11-11 16:49:21.467591"], ["updated_at", "2022-11-11 16:49:21.467591"]]
+  TRANSACTION (7.0ms)  commit transaction                     
+=> true                                                       
+", "2022-11-11 16:51:07.138987"]]                                                    
+#<Rating:0x00007fa424916ed0
+ id: 5,
+ score: 17,
+ beer_id: 17,
+ created_at: Fri, 11 Nov 2022 16:51:15.783181000 UTC +00:00,
+ updated_at: Fri, 11 Nov 2022 16:51:15.783181000 UTC +00:00>
+irb(main):013:0> k2 = Beer.create name:"Nanny State", style: "lowalcohol", brewery: b
+  TRANSACTION (0.1ms)  begin transaction
+  Beer Create (0.5ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Nanny State"], ["style", "lowalcohol"], ["brewery_id", 6], ["created_at", "2022-11-11 16:52:09.725052"], ["updated_at", "2022-11-11 16:52:09.725052"]]                        
+=>                                                                                                      
+#<Beer:0x00007fa4248efa88                                                                               
+...                                                                                                     
+irb(main):014:0> k2
+=> 
+#<Beer:0x00007fa4248efa88                                                                               
+ id: 18,                                                                                                
+ name: "Nanny State",                                                                                   
+ style: "lowalcohol",                                                                                   
+ brewery_id: 6,                                                                                         
+ created_at: Fri, 11 Nov 2022 16:52:09.725052000 UTC +00:00,
+ updated_at: Fri, 11 Nov 2022 16:52:09.725052000 UTC +00:00>
+  beer_id: 17,                                                
+  created_at: Fri, 11 Nov 2022 16:51:15.783181000 UTC +00:00, 
+  updated_at: Fri, 11 Nov 2022 16:51:15.783181000 UTC +00:00>]
+irb(main):016:0> k2.ratings.create score: 55
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 55], ["beer_id", 18], ["created_at", "2022-11-11 16:52:46.752972"], ["updated_at", "2022-11-11 16:52:46.752972"]]                                                                   
+  TRANSACTION (6.4ms)  commit transaction                                                           
+=>                                                                                                  
+#<Rating:0x00007fa424f05e68                                                                         
+ id: 6,                                                                                             
+ score: 55,                                                                                         
+ beer_id: 18,                                                                                       
+ created_at: Fri, 11 Nov 2022 16:52:46.752972000 UTC +00:00,                                        
+ updated_at: Fri, 11 Nov 2022 16:52:46.752972000 UTC +00:00>                                        
+irb(main):017:0> k2.ratings.create score: 75
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 75], ["beer_id", 18], ["created_at", "2022-11-11 16:52:50.645836"], ["updated_at", "2022-11-11 16:52:50.645836"]]
+  TRANSACTION (6.5ms)  commit transaction
+=> 
+#<Rating:0x00007fa424e64798
+ id: 7,
+ score: 75,
+ beer_id: 18,
+ created_at: Fri, 11 Nov 2022 16:52:50.645836000 UTC +00:00,
+ updated_at: Fri, 11 Nov 2022 16:52:50.645836000 UTC +00:00>
+irb(main):018:0> k2.ratings.create score: 169
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 169], ["beer_id", 18], ["created_at", "2022-11-11 16:52:54.864737"], ["updated_at", "2022-11-11 16:52:54.864737"]]
+  TRANSACTION (6.8ms)  commit transaction
+=> 
+#<Rating:0x00007fa424d82028
+ id: 8,
+ score: 169,
+ beer_id: 18,
+ created_at: Fri, 11 Nov 2022 16:52:54.864737000 UTC +00:00,
+ updated_at: Fri, 11 Nov 2022 16:52:54.864737000 UTC +00:00>
+irb(main):019:0> exit
+
