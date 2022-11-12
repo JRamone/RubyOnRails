@@ -1,7 +1,7 @@
 <h2>List of ratings</h2>
 <ul>
   <% @ratings.each do |rating|%>
-    <li> <%= rating %> </li>
+    <li> <%= render rating %> </li>
   <% end %>
 </ul>
 <div>total of <%= @ratings.count %> ratings. </div>
