@@ -3,6 +3,6 @@ class Beer < ApplicationRecord
   belongs_to :brewery
 
 def average_rating
-  self.ratings.average(:score).to_f
+  self.ratings.map{|rating|rating.score}.inject(:+)
 end
 end
