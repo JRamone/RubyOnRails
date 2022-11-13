@@ -4,7 +4,7 @@
 <% if @beer.ratings.empty? %>
   <p>this beer haven't been rated yet...</p>
 <% else %>
-  <p> Beer has <%= @beer.ratings.count %> ratings with an average of <%= @beer.average_rating %> </p>
+  <p> Beer has <%=pluralize(@beer.ratings.count, "rating")%> with an average of <%= @beer.average_rating %> </p>
 <% end %>
 <div>
   <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
