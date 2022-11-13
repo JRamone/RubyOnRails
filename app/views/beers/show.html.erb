@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @beer %>
-
+<% if @beer.ratings.empty? %>
+  <p>this beer haven't been rated yet...</p>
+<% else %>
+  <p> Beer has <%= @beer.ratings.count %> ratings with an average of <%= @beer.average_rating %> </p>
+<% end %>
 <div>
   <%= link_to "Edit this beer", edit_beer_path(@beer) %> |
   <%= link_to "Back to beers", beers_path %>
