@@ -1,6 +1,5 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: %i[ show edit update destroy ]
-
   # GET /beers or /beers.json
   def index
     @beers = Beer.all
@@ -14,10 +13,13 @@ class BeersController < ApplicationController
   def new
     @beer = Beer.new
     @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
 
   # GET /beers/1/edit
   def edit
+    @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
 
   # POST /beers or /beers.json

@@ -1,8 +1,8 @@
 <h2>List of ratings</h2>
 <ul>
   <% @ratings.each do |rating|%>
-    <li> <%= render rating %> </li>
+    <li> <%= render rating %> <%= button_to 'delete', rating, method: :delete,form: {data: {turbo_confirm: "delete?" }} %></li>
   <% end %>
 </ul>
 <div>total of <%= @ratings.count %> ratings. </div>
-<div><%= link_to "Submit new rating", ratings_new_path %> </div>
+<div><%= link_to "Submit new rating", new_rating_path %> </div>
