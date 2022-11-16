@@ -14,6 +14,4 @@ class Brewery < ApplicationRecord
     self.year = 2022
     puts "changed year to #{year}"
   end
-
 end
-
