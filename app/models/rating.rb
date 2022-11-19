@@ -1,7 +1,8 @@
 class Rating < ApplicationRecord
   belongs_to :beer
+  belongs_to :user
 
   def tuloste
-    puts "#{beer.name} #{score}"
+    "#{beer.name} #{score}"
   end
 end
