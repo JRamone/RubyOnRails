@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
       redirect_to user_path current_user
     else
       @beers = Beer.all
-      render: new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

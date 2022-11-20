@@ -4,6 +4,8 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   belongs_to :brewery
 
+  validates :name, presence: true
+
   def average
     return 0 if ratings.empty?
 
