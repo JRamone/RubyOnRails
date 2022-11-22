@@ -3,3 +3,4 @@
 | 18.11.2022| 1.5h | How to keep track of time, continue on week 3 |
 | 19.11.2022| 3.0h | Week 3. Usermodel, login and validations. Exercises 3-6 |
 | 20.11.2022| 2.0h | Week 3. Validations, many to many connections. Exercises 7,8|
+| 21.11.2022| 4.0h | Week 3. BeerClub exercises, association problems. Exercises 9,10|
