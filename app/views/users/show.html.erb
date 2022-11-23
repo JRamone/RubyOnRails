@@ -6,10 +6,20 @@
   <p> Has made <%= @user.ratings.count %> ratings, average rating <%= @user.average_rating %> </p>
 </div>
 <div>
+<div>
+  <h2><b>Member of</b></h2>
+      <ul>
+      <% @user.beer_clubs.each do |c| %>
+        <li><%= c.name %></li>
+      <% end %>
+      </ul>
+</div>
   <h2><b>Ratings</b></h2>
+  <ul>
   <% @user.ratings.each do |rating| %>
-    <p><%= rating.tuloste %> <%= link_to "Delete", rating, data: {"turbo-method": :delete}  %></p>
+    <li><%= rating.tuloste %> <%= link_to "Delete", rating, data: {"turbo-method": :delete}  %></li>
   <% end %>
+  </ul>
 </div>
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
