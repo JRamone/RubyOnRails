@@ -11,8 +11,7 @@
       <% end %>
     </ul>
   <% end %>
-
-  <%= f.select :beer_club_id, options_from_collection_for_select(@beer_clubs, :id, :to_s) %>
+  <%= f.select :beer_club_id, options_from_collection_for_select(@beer_clubs.select do |c| not current_user.beer_clubs.include? c end, :id, :to_s) %>
 
   <%= f.submit %>
   <% end %>
