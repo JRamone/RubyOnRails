@@ -1,6 +1,6 @@
 class BeerClub < ApplicationRecord
   def to_s
-    self.name
+    name
   end
 
   has_many :memberships, dependent: :destroy

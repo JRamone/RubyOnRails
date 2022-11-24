@@ -5,3 +5,4 @@
 | 20.11.2022| 2.0h | Week 3. Validations, many to many connections. Exercises 7,8|
 | 21.11.2022| 4.0h | Week 3. BeerClub exercises, association problems. Exercises 9,10|
 | 23.11.2022| 1.5h | Week 3. Database finally works. Start with passwords. Exercises 9,10|
+| 24.11.2022| 3.0h | Week 3. Authentication and model dependencies. Exercises 11 - 16|
