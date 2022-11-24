@@ -1,6 +1,9 @@
 <h1>Sign in </h1>
+
 <p style="color: red"><%= notice %> </p>
+
 <%= form_with url: session_path, method: :post do |form| %>
-  <%= form.text_field :username %>
+  <p> username <%= form.text_field :username %> </p>
+  <p> password<%= form.password_field :password %> </p>
   <%= form.submit "Log in" %>
 <% end %>

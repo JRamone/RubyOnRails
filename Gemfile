@@ -9,8 +9,7 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-gem "bcrypt", "~> 3.1.7"
-# Use sqlite3 as the database for Active Record
+gem 'bcrypt','~> 3.1.11' 
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-byebug'
