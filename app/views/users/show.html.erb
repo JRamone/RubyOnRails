@@ -17,13 +17,20 @@
   <h2><b>Ratings</b></h2>
   <ul>
   <% @user.ratings.each do |rating| %>
-    <li><%= rating.tuloste %> <%= link_to "Delete", rating, data: {"turbo-method": :delete}  %></li>
+    <li><%= rating.tuloste %>
+      <% if current_user == @user %>  
+         <%= link_to "Delete", rating, data: {"turbo-method": :delete}  %>
+      <% end %> 
+    </li>
+    
   <% end %>
   </ul>
 </div>
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <% if current_user == @user %>  
+  <p>
+  <%= link_to "Edit this user", edit_user_path(@user) %>  <%= button_to "Destroy this user", @user, method: :delete %>
+  </p>
+  <% end %>
   <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
 </div>
