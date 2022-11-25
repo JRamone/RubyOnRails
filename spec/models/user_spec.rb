@@ -1,6 +1,16 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
 
 RSpec.describe User, type: :model do
+
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
+  
+  def create_beer_with_rating(object, score)
+    beer = FactoryBot.create(:beer)
+    FactoryBot.create(:rating, score: score, user: object[:user])
+    beer
+  end
   
   it "has the username set correctly" do
     user = User.new username: "Pekka"
@@ -16,21 +26,18 @@ RSpec.describe User, type: :model do
   end
 
   describe "with a proper password" do
-    let(:user){ User.create username: "Pekka", password: "Secret1", password_confirmation: "Secret1" }
-    let(:test_brewery) { Brewery.new name: "test", year: 2000}
-    let(:test_beer) { Beer.create name: "testbeer", style: "teststyle", brewery: test_brewery }
+    let(:user){ FactoryBot.create(:user) }
+    let(:test_brewery) { FactoryBot.create(:test_brewery) }
+    let(:test_beer) { FactoryBot.create(:test_beer) }
     
     it 'is saved' do
       expect(user).to be_valid
       expect(User.count).to eq(1) 
     end
     
-    it 'and with two ratings, has the correect average rating' do
-      rating = Rating.create score: 10, beer: test_beer
-      rating2 = Rating.create score: 20, beer: test_beer
-
-      user.ratings << rating
-      user.ratings << rating2
+    it 'and with two ratings, has the correct average rating' do
+      FactoryBot.create(:rating, score:10, user: user) 
+      FactoryBot.create(:rating, score:20, user: user) 
 
       expect(user.ratings.count).to eq(2)
       expect(user.average_rating).to eq(15.0)
@@ -68,4 +75,33 @@ RSpec.describe User, type: :model do
       expect(User.count).to eq(0) 
     end
   end
+  
+  describe "Favorite beer" do
+    let(:user){ FactoryBot.create(:user) }
+
+    it 'has method for determining one' do
+       expect(user).to respond_to(:favorite_beer) 
+    end
+
+    it 'without ratings does not have one' do
+      expect(user.favorite_beer).to eq(nil) 
+    end
+
+    it 'is the only rated if only one rating' do
+      beer = FactoryBot.create(:beer)
+      rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)  
+
+      expect(user.favorite_beer).to eq(beer)
+    end
+
+    it 'is the one with highest rating if several rated' do
+      create_beer_with_rating({user: user},10)
+      create_beer_with_rating({user: user},30)
+      best = create_beer_with_rating({user: user},50)
+
+      expect(user.favorite_beer).to eq(best)
+    end
+
+  end
+
 end

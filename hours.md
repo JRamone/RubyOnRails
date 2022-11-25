@@ -6,3 +6,4 @@
 | 21.11.2022| 4.0h | Week 3. BeerClub exercises, association problems. Exercises 9,10|
 | 23.11.2022| 1.5h | Week 3. Database finally works. Start with passwords. Exercises 9,10|
 | 24.11.2022| 3.0h | Week 3. Authentication and model dependencies. Exercises 11 - 16|
+| 25.11.2022| 4.0h | Week 4. Testing. Rspec, beer- and usermodel tests. Exercises 1 & 2|
