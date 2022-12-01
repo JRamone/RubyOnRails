@@ -1,17 +1,20 @@
 require 'rails_helper'
-require 'database_cleaner/active_record'
 
 RSpec.describe User, type: :model do
 
-  DatabaseCleaner.strategy = :truncation
-  DatabaseCleaner.clean
-  
-  def create_beer_with_rating(object, score)
-    beer = FactoryBot.create(:beer)
-    FactoryBot.create(:rating, score: score, user: object[:user])
+  def create_beer_with_rating(object, score, style="Lager", brewery_name="Koff")
+    brewery = FactoryBot.create(:brewery, name: brewery_name)
+    beer = FactoryBot.create(:beer,style: style, brewery: brewery)
+    FactoryBot.create(:rating, beer: beer, score: score, user: object[:user])
     beer
   end
   
+  def create_beers_with_many_ratings(object, scores)
+    scores.each do |score|
+      create_beer_with_rating(object,score)
+    end
+  end
+
   it "has the username set correctly" do
     user = User.new username: "Pekka"
 
@@ -103,5 +106,65 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe "Favorite style" do
+    let(:user){ FactoryBot.create(:user) }
+
+    it 'has method for determining one' do
+      expect(user).to respond_to(:favorite_style)  
+    end  
+
+    it 'without ratings does not have one' do
+      expect(user.favorite_style).to eq(nil) 
+    end
+
+    it 'is the correct style if only one rating and style' do
+      user = FactoryBot.create(:user)
+      beer = create_beer_with_rating({user:user}, 40) 
+
+      expect(user.favorite_style).to eq(beer.style)
+    end
+    
+    it 'is the correct style if many ratings and styles' do
+      user = FactoryBot.create(:user)
+      create_beer_with_rating({user:user}, 40,style="Lager") 
+      create_beer_with_rating({user:user}, 30,style="lowalcohol") 
+      favorite_beer = create_beer_with_rating({user:user}, 50,style="Porter") 
+
+      expect(user.favorite_style).to eq(favorite_beer.style)
+    end
+
+  end 
+
+  describe "Favorite brewery" do
+    let(:user){ FactoryBot.create(:user) }
+
+    it 'has method for determining one' do
+      expect(user).to respond_to(:favorite_brewery)  
+    end  
+
+    it 'without ratings does not have one' do
+      expect(user.favorite_brewery).to eq(nil) 
+    end
+
+    it 'is the correct brewery if only one rating' do
+      user = FactoryBot.create(:user)
+      beer = create_beer_with_rating({user:user}, 40) 
+
+      expect(user.favorite_brewery).to eq(beer.brewery.name)
+    end
+    
+    it 'is the correct brewery if many ratings and breweries' do
+      user = FactoryBot.create(:user)
+      create_beer_with_rating({user:user}, 40, brewery_name="Panimo1") 
+      create_beer_with_rating({user:user}, 48, brewery_name="Panimo1") 
+      create_beer_with_rating({user:user}, 35, brewery_name="Panimo2") 
+      create_beer_with_rating({user:user}, 50, brewery_name="Panimo2") 
+      favorite_beer = create_beer_with_rating({user:user}, 50, brewery_name="Panimo2") 
+
+      expect(user.favorite_brewery).to eq(favorite_beer.brewery.name)
+    end
+
+  end 
 
 end
