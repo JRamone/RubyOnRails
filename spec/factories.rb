@@ -1,7 +1,10 @@
 FactoryBot.define do
+  sequence :username do |n|
+    "Pekka#{n}"
+  end
 
   factory :user do
-    username { "Pekka" }
+    username { generate :username }
     password { "Foobar1" }
     password_confirmation { "Foobar1" }
   end
