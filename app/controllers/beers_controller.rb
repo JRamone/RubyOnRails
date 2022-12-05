@@ -69,6 +69,7 @@ class BeersController < ApplicationController
     @breweries = Brewery.all
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
+
   # Only allow a list of trusted parameters through.
   def beer_params
     params.require(:beer).permit(:name, :style, :brewery_id)

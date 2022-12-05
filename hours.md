@@ -8,3 +8,4 @@
 | 24.11.2022| 3.0h | Week 3. Authentication and model dependencies. Exercises 11 - 16|
 | 25.11.2022| 4.0h | Week 4. Testing. Rspec, beer- and usermodel tests. Exercises 1 & 2|
 | 1.12.2022| 4.0h | Week 4. Exercises 3 & 4|
+| 4.12.2022| 4.0h | Week 4. Capybara tests, simplecov. Exercises 5-10|

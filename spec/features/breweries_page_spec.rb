@@ -38,14 +38,5 @@ describe "when breweries exists" do
     expect(page).to have_content "Established in 1897"
   end
 
-  it 'Deleted rating is removed from database' do
-    create_beer_with_rating({user: user})
-    create_beer_with_rating({user: user})
-    visit ratings_path
-    puts page.html
-
-    expect(page).to have_content("total of #{Rating.count} ratings.")
-    expect(Rating.count).to eq(2)
-  end
     
 end

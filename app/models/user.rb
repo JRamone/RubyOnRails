@@ -18,17 +18,19 @@ class User < ApplicationRecord
 
   def favorite_beer
     return nil if ratings.empty?
+
     ratings.order(score: :desc).limit(1).first.beer
   end
 
   def favorite_style
     return nil if beers.empty?
-    self.beers.group(:style).order('avg(score) desc').first.style
+
+    beers.group(:style).order('avg(score) desc').first.style
   end
 
   def favorite_brewery
     return nil if breweries.empty?
-    self.breweries.group(:name).order('avg(score) desc').first.name
-  end
 
+    breweries.group(:name).order('avg(score) desc').first.name
+  end
 end
