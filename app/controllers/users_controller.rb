@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_favorite_style
+    res = ActiveRecord::Base.connection.exec_query('SELECT beers.style, AVG(score) FROM ratings INNER JOIN beers ON beers.id = beer_id GROUP BY beers.style LIMIT 1')
+    res.to_a.first['style']
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
