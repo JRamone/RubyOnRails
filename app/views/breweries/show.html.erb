@@ -6,9 +6,11 @@
 <% else %>
   <p> Brewery has <%=pluralize(@brewery.ratings.count, "rating")%> with an average of <%= @brewery.average_rating %> </p>
 <% end %>
+<% if current_user %>
 <div>
   <%= link_to "Edit this brewery", edit_brewery_path(@brewery) %> |
   <%= link_to "Back to breweries", breweries_path %>
 
   <%= button_to "Destroy this brewery", @brewery, method: :delete %>
 </div>
+<% end %>

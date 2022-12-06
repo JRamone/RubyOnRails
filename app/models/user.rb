@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def favorite_style
     return nil if beers.empty?
 
-    beers.select(:name, :score, :style, :id).group(:style).order('avg(score) desc').first.style
+    beers.group(:style).order('avg(score) desc').first.style
   end
 
   def favorite_brewery
