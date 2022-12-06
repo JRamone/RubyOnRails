@@ -90,7 +90,7 @@ describe "User" do
 
         expect(page).to have_content("Has made #{Rating.count} ratings,")
         expect(Rating.count).to eq(2)
-        find("a[href='/ratings/2']").click
+        find("a[href='/ratings/#{Rating.count}']").click
         expect(Rating.count).to eq(1)
         expect(Rating.last.id).to eq(1)
     end
