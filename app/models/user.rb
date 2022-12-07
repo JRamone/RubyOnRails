@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def favorite_style
     return nil if beers.empty?
-    
+
     res = ActiveRecord::Base.connection.exec_query('SELECT beers.style, AVG(score) as avg_rating FROM ratings INNER JOIN beers ON beers.id = beer_id GROUP BY beers.style ORDER BY avg_rating DESC LIMIT 1')
     res.to_a.first['style']
   end
