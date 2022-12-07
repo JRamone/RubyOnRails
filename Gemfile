@@ -8,6 +8,8 @@ gem "rails", "~> 7.0.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+# HTTP request and such
+gem 'httparty'
 
 gem 'bcrypt','~> 3.1.11' 
 group :development, :test do

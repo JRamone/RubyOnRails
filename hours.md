@@ -11,3 +11,4 @@
 | 4.12.2022| 4.0h | Week 4. Capybara tests, simplecov. Exercises 5-10|
 | 5.12.2022| 2.0h | Week 4. Multiple tests problem
 | 7.12.2022| 3.0h | Week 4. Postgresql tests problem
+| 8.12.2022| 3.0h | Week 4-5. Deal with CI/CD problems, start week 5. API's|
