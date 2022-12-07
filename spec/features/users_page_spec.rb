@@ -85,13 +85,13 @@ describe "User" do
   describe "Rating" do
     it 'can be deleted' do
         create_beer_with_rating({user: user})
-        rating_to_be_deleted = create_beer_with_rating({user: user})
+        create_beer_with_rating({user: user})
         visit user_path(user)
         puts page.html
         expect(page).to have_content("Has made #{Rating.count} ratings,")
         expect(Rating.count).to eq(2)
 
-        all(:link, href:"/ratings/#{rating_to_be_deleted.id}").first.click
+        all(:link, href:"/ratings/15").first.click
 
         expect(Rating.count).to eq(1)
         expect(Rating.last.id).to eq(1)
