@@ -85,12 +85,12 @@ describe "User" do
   describe "Rating" do
     it 'can be deleted' do
         create_beer_with_rating({user: user})
-        create_beer_with_rating({user: user})
+        rating = create_beer_with_rating({user: user})
         visit user_path(user)
 
         expect(page).to have_content("Has made #{Rating.count} ratings,")
         expect(Rating.count).to eq(2)
-        find("a[href='/ratings/#{Rating.count}']").click
+        find(:href, "/ratings/#{rating.id}").click
         expect(Rating.count).to eq(1)
         expect(Rating.last.id).to eq(1)
     end
