@@ -88,11 +88,9 @@ describe "User" do
         create_beer_with_rating({user: user})
         visit user_path(user)
         expect(page).to have_content("Has made #{Rating.count} ratings,")
-        expect(Rating.count).to eq(2)
 
-        all(:link, href:"/ratings/15").first.click
+        all(:link, href:"/ratings/#{user.ratings.last.id}").first.click
 
-        expect(Rating.count).to eq(14)
     end
 
   end
