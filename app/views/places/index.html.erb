@@ -4,3 +4,11 @@
   city <%= form.text_field :city %>
 <%= form.submit "Search" %>
 <% end %>
+
+<% if @places %>
+  <ul>
+    <% @places.each do |place| %>
+      <li><%= place.name %></li>
+      <% end %>
+  </ul>
+  <% end %>
