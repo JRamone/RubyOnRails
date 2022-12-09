@@ -1,7 +1,7 @@
 class BeermappingApi
   def self.places_in(city)
     city = city.downcase
-    Rails.cache.fetch(city,expires_in: 1.minute) { get_places_in(city) }
+    Rails.cache.fetch(city, expires_in: 7.days) { get_places_in(city) }
   end
 
   def self.get_places_in(city)
@@ -10,7 +10,7 @@ class BeermappingApi
     response = HTTParty.get "#{url}#{ERB::Util.url_encode(city)}"
     places = response.parsed_response["bmp_locations"]["location"]
 
-    return [] if places.is_a?(Hash) and places['id'].nil?
+    return [] if places.is_a?(Hash) && places['id'].nil?
 
     places = [places] if places.is_a?(Hash)
     places.map do |place|
@@ -19,6 +19,9 @@ class BeermappingApi
   end
 
   def self.key
-    "a25d9f2f0098df836513c302dd16daca"
+    return nil if Rails.env.test?
+    raise 'BEERMAPPING_APIKEY env variable not defined' if ENV['BEERMAPPING_APIKEY'].nil?
+
+    ENV.fetch('BEERMAPPING_APIKEY')
   end
 end
