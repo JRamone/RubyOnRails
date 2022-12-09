@@ -3,6 +3,7 @@ require 'simplecov'
 SimpleCov.start('rails')
 require 'spec_helper'
 require 'helpers'
+require 'webmock/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production

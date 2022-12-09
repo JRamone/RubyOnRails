@@ -1,5 +1,10 @@
 class BeermappingApi
   def self.places_in(city)
+    city = city.downcase
+    Rails.cache.fetch(city) { get_places_in(city) }
+  end
+
+  def self.get_places_in(city)
     url = "http://beermapping.com/webservice/loccity/#{key}/"
 
     response = HTTParty.get "#{url}#{ERB::Util.url_encode(city)}"
