@@ -1,43 +1,43 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/jore/RubyOnRails/app/helpers/application_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/helpers/beer_clubs_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/beer_clubs_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/helpers/beers_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/beers_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/helpers/breweries_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/breweries_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/helpers/memberships_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/memberships_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/helpers/users_helper.rb": {
+      "/home/jore/ratebeer/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/beer.rb": {
+      "/home/jore/ratebeer/app/models/beer.rb": {
         "lines": [
           1,
           1,
@@ -61,14 +61,14 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/application_record.rb": {
+      "/home/jore/ratebeer/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/concerns/rating_average.rb": {
+      "/home/jore/ratebeer/app/models/concerns/rating_average.rb": {
         "lines": [
           1,
           1,
@@ -79,7 +79,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/user.rb": {
+      "/home/jore/ratebeer/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -121,7 +121,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/brewery.rb": {
+      "/home/jore/ratebeer/app/models/brewery.rb": {
         "lines": [
           1,
           1,
@@ -153,7 +153,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/sessions_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -178,7 +178,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/application_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -195,7 +195,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/users_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -272,7 +272,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/rating.rb": {
+      "/home/jore/ratebeer/app/models/rating.rb": {
         "lines": [
           1,
           1,
@@ -288,7 +288,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/membership.rb": {
+      "/home/jore/ratebeer/app/models/membership.rb": {
         "lines": [
           1,
           1,
@@ -296,7 +296,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/beer_club.rb": {
+      "/home/jore/ratebeer/app/models/beer_club.rb": {
         "lines": [
           1,
           1,
@@ -308,7 +308,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/beers_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/beers_controller.rb": {
         "lines": [
           1,
           1,
@@ -321,6 +321,8 @@
           null,
           null,
           1,
+          0,
+          0,
           null,
           null,
           null,
@@ -390,7 +392,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/breweries_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/breweries_controller.rb": {
         "lines": [
           1,
           1,
@@ -475,7 +477,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/lib/beermapping_api.rb": {
+      "/home/jore/ratebeer/lib/beermapping_api.rb": {
         "lines": [
           1,
           1,
@@ -506,7 +508,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/models/place.rb": {
+      "/home/jore/ratebeer/app/models/place.rb": {
         "lines": [
           1,
           1,
@@ -515,7 +517,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/places_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/places_controller.rb": {
         "lines": [
           1,
           1,
@@ -535,7 +537,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/controllers/ratings_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/ratings_controller.rb": {
         "lines": [
           1,
           1,
@@ -566,7 +568,7 @@
           null
         ]
       },
-      "/home/jore/RubyOnRails/app/channels/application_cable/channel.rb": {
+      "/home/jore/ratebeer/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -576,7 +578,7 @@
         "branches": {
         }
       },
-      "/home/jore/RubyOnRails/app/channels/application_cable/connection.rb": {
+      "/home/jore/ratebeer/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -586,7 +588,7 @@
         "branches": {
         }
       },
-      "/home/jore/RubyOnRails/app/controllers/beer_clubs_controller.rb": {
+      "/home/jore/ratebeer/app/controllers/beer_clubs_controller.rb": {
         "lines": [
           0,
           0,
@@ -600,72 +602,6 @@
           null,
           0,
           0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/jore/RubyOnRails/app/controllers/memberships_controller.rb": {
-        "lines": [
           0,
           0,
           null,
@@ -681,19 +617,7 @@
           null,
           0,
           0,
-          0,
-          0,
           null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0,
@@ -744,7 +668,88 @@
         "branches": {
         }
       },
-      "/home/jore/RubyOnRails/app/jobs/application_job.rb": {
+      "/home/jore/ratebeer/app/controllers/memberships_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jore/ratebeer/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -757,7 +762,7 @@
         "branches": {
         }
       },
-      "/home/jore/RubyOnRails/app/mailers/application_mailer.rb": {
+      "/home/jore/ratebeer/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -768,6 +773,6 @@
         }
       }
     },
-    "timestamp": 1670662442
+    "timestamp": 1670686528
   }
 }
