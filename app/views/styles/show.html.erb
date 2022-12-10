@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @style %>
+    <strong>Beers:</strong>
+    <ul>
+      <% @beers.select{|b| b.style_id == @style.id }.each do |b| %>
+      <li><%= b.name %></li>
+    <% end %> 
+    </ul>
+  </p>
+
+<div>
+  <%= link_to "Edit this style", edit_style_path(@style) %> |
+  <%= link_to "Back to styles", styles_path %>
+
+  <%= button_to "Destroy this style", @style, method: :delete %>
+</div>
