@@ -10,4 +10,7 @@ class PlacesController < ApplicationController
       render :index, status: 418
     end
   end
+
+  def show
+  end
 end

@@ -15,6 +15,7 @@
       <% end %>
     </thead>
     <% @places.each do |place| %>
+      <% place.link = link_to place.name, place_path(place.id), :onclick => session[:place] = place %>
       <tr>
         <% Place.rendered_fields.each do |field| %>
           <td><%= place.send(field) %></td>
