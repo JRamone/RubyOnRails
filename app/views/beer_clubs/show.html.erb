@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @beer_club %>
+<%= form_with(model: @membership) do |f| %>
+  <%= f.hidden_field: @beer_club.id %>
+   <%= f.submit "Join this club" %>
+<% end %>
 <% if current_user %>
 <div>
   <%= link_to "Edit this beer club", edit_beer_club_path(@beer_club) %> |
