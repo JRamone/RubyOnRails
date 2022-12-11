@@ -16,6 +16,17 @@ class User < ApplicationRecord
   has_many :beer_clubs, through: :memberships
   has_many :breweries, through: :beers
 
+  def favorite(groupped_by)
+    return nil if ratings.empty?
+
+    grouped_ratings = ratings.group_by{ |r| r.beer.send(groupped_by) }
+    averages = grouped_ratings.map do |group, ratings|
+      { group: group, score: average_of(ratings) }
+    end
+
+    averages.max_by{ |r| r[:score] }[:group]
+  end
+
   def favorite_beer
     return nil if ratings.empty?
 
@@ -23,16 +34,14 @@ class User < ApplicationRecord
   end
 
   def favorite_style
-    return nil if beers.empty?
-
-    res = ActiveRecord::Base.connection.exec_query('SELECT beers.style, AVG(score) as avg_rating FROM ratings INNER JOIN beers ON beers.id = beer_id GROUP BY beers.style ORDER BY avg_rating DESC LIMIT 1')
-    res.to_a.first['style']
+    favorite(:style)
   end
 
   def favorite_brewery
-    return nil if breweries.empty?
+    favorite(:brewery)
+  end
 
-    res = ActiveRecord::Base.connection.exec_query('SELECT breweries.name, AVG(score) as avg_rating FROM ratings INNER JOIN beers ON beers.id = beer_id INNER JOIN breweries ON breweries.id = beers.brewery_id GROUP BY breweries.name ORDER BY avg_rating DESC LIMIT 1')
-    res.to_a.first['name']
+  def average_of(ratings)
+    ratings.sum(&:score).to_f / ratings.count
   end
 end

@@ -21,6 +21,10 @@ class Brewery < ApplicationRecord
     puts "number of beers #{beers.count}"
   end
 
+  def to_s
+    self.name
+  end
+
   def restart
     self.year = 2022
     puts "changed year to #{year}"

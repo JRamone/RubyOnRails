@@ -140,7 +140,7 @@ RSpec.describe User, type: :model do
       user = FactoryBot.create(:user)
       beer = create_beer_with_rating({user:user}, 40) 
 
-      expect(user.favorite_brewery).to eq(beer.brewery.name)
+      expect(user.favorite_brewery.name).to eq(beer.brewery.name)
     end
     
     it 'is the correct brewery if many ratings and breweries' do
@@ -151,7 +151,7 @@ RSpec.describe User, type: :model do
       create_beer_with_rating({user:user}, 50, brewery_name="Panimo2") 
       favorite_beer = create_beer_with_rating({user:user}, 50, brewery_name="Panimo2") 
 
-      expect(user.favorite_brewery).to eq(favorite_beer.brewery.name)
+      expect(user.favorite_brewery.name).to eq(favorite_beer.brewery.name)
     end
 
   end 

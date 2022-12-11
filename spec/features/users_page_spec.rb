@@ -66,11 +66,11 @@ describe "User" do
       end 
 
       it 'Favorite style is displayed correctly' do
-        create_beer_with_rating({user: user}, 45,style="MyFavoriteBeerStyle")
+        create_beer_with_rating({user: user}, 45)
         create_beer_with_rating({user: user}, 25)
         visit user_path(user, user.id)
 
-        expect(page).to have_content("MyFavoriteBeerStyle")
+        expect(page).to have_content("Test_style")
       end 
 
       it 'Favorite brewery is displayed correctly' do
