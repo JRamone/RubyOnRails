@@ -22,7 +22,7 @@ class Brewery < ApplicationRecord
   end
 
   def to_s
-    self.name
+    name
   end
 
   def restart

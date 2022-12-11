@@ -8,6 +8,15 @@
 <% end %>
 
 <% if @places %>
+  <br> 
+  <div><b>The current beer weather in <%= @weather.city  %></b></div>
+  <br>
+  <div><%= @weather.temperature %> Celsius</div>
+  <br>
+  <div><img src=<%= @weather.weather_icons.first %>></div>
+  <br>
+  <div><b>wind: </b><%= @weather.wind_speed %>m/s, direction <%= @weather.wind_dir %></div>
+  <br>
   <table>
     <thead>
       <% Place.rendered_fields.each do |field| %>

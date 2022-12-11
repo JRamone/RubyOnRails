@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
     grouped_ratings = ratings.group_by{ |r| r.beer.send(groupped_by) }
     averages = grouped_ratings.map do |group, ratings|
-      { group: group, score: average_of(ratings) }
+      { group:, score: average_of(ratings) }
     end
 
     averages.max_by{ |r| r[:score] }[:group]
