@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control'%>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :founded, style: "display: block" %>
-    <%= form.number_field :founded %>
+    <%= form.number_field :founded, class: 'form-control'%>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, class: 'form-control'%>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit :submit, class: 'btn btn-primary'%>
   </div>
 <% end %>

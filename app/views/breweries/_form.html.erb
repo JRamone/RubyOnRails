@@ -20,7 +20,10 @@
     <%= form.label :year, style: "display: block" %>
     <%= form.number_field :year %>
   </div>
-
+  <div>
+   <%= form.label :active, style: "display: block" %>
+   <%= form.check_box :active %>
+  </div>
   <div>
     <%= form.submit %>
   </div>

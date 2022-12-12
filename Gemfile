@@ -11,6 +11,11 @@ gem "sprockets-rails"
 # HTTP request and such
 gem 'httparty'
 
+#Bootstrap
+gem 'bootstrap', '~> 5.2.0'
+gem 'jquery-rails'
+gem 'mini_racer'
+
 gem 'bcrypt','~> 3.1.11' 
 group :development, :test do
   gem 'sqlite3'

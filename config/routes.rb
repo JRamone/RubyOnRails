@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :beers
   resources :breweries
-  root 'breweries#index'
+  root 'sessions#new'
   get 'kaikki_bisset', to: 'beers#index'
   resources :memberships, only: [:new, :create, :destroy]
   resources :ratings, only: [:index, :new, :create, :destroy]

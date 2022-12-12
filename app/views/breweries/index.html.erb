@@ -1,25 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
+<div class="d-grid gap-3">
 <h1>Breweries</h1>
-<p> Number of breweries: <%= @breweries.count %> </p>
-<div id="breweries">
-  <% @breweries.each do |brewery| %>
-    <div id="<%=dom_id brewery%>">
-      <p>
-        <h2> <%= link_to brewery.name, brewery %> </h2>
-      </p>
 
-      <p>
-        <i>Established in </i>
-        <%= brewery.year %>
-      </p>
-      <p>Beers in this brewery:
-        <% brewery.beers.each do |beer| %>
-          <%= link_to beer.name, beer %>
-        <% end %>
-      </p>
-    </div>
+<h2>Active</h2>
+
+<p> Number of active breweries: <%= @active_breweries.count %> </p>
+
+<div id="breweries">
+  <% @active_breweries.each do |brewery| %>
+    <%= render brewery %>
   <% end %>
 </div>
 
-<%= link_to("New brewery", new_brewery_path) if current_user %>
+<h2>Retired</h2>
+
+<p> Number of retired breweries: <%= @retired_breweries.count %> </p>
+
+<div id="retired_breweries">
+  <% @retired_breweries.each do |brewery| %>
+    <%= render brewery %>
+  <% end %>
+</div>
+</div>
+
+<p>
+<%= link_to "List of beers", beers_path%>
+</p>
+<%= link_to("New brewery", new_brewery_path, class:"btn btn-primary") if current_user %>

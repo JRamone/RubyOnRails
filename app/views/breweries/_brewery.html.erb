@@ -1,8 +1,10 @@
 <div id="<%= dom_id brewery %>">
-  <p>
-    <h2><%= link_to brewery.name, brewery %></h2>
-  </p>
-
+ <h3>
+  <%= brewery.name %>
+  <% if not brewery.active  %>
+    <span class="badge bg-secondary">retired</span>
+  <% end %>
+</h3>
   <p>
     <i>Established in </i>
     <%= brewery.year %>

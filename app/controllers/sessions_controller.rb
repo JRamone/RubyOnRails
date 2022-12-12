@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id if user
-      redirect_to user, notice: "User #{params[:username]},Welcome back!"
+      redirect_to user, notice: "May the Beer be with you, #{params[:username]}."
     else
       redirect_to signin_path, notice: "Username and/or password mismatch"
 
