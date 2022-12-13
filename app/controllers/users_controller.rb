@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
+  def toggle_enabled
+    user = User.find(params[:id])
+    user.update_attribute :enabled, !user.enabled
+
+    new_status = user.enabled? ? "Enabled" : "Disabled"
+
+    redirect_to user, notice: "account status changed to #{new_status}"
+  end
+
   # GET /users or /users.json
   def index
     @users = User.all

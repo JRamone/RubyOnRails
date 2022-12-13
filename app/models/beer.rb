@@ -8,6 +8,10 @@ class Beer < ApplicationRecord
 
   validates :name, presence: true
 
+  def self.best_rated(num)
+    Beer.all.sort_by(&:average).reverse.first num
+  end
+
   def average
     return 0 if ratings.empty?
 

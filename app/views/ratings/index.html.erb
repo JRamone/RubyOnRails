@@ -1,8 +1,72 @@
-<h2>List of ratings</h2>
-<ul>
-  <% @ratings.each do |rating|%>
-    <li> <%= render rating %> </li>
-  <% end %>
-</ul>
-<div>total of <%= @ratings.count %> ratings. </div>
-<div><%= link_to "Submit new rating", new_rating_path, class:'btn btn-primary' %> </div>
+<div class="container text-center">
+  <div> <h1>Ratings</h1> </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2> Best beers </h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Beer</th>
+            <th scope="col">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @best_beers.each do |b| %>
+          <%= render b %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <h2> Best breweries </h2>
+ <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Brewery</th>
+            <th scope="col">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @best_breweries.each do |b| %>
+          <%= render b %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <h2> Best styles </h2>
+ <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Style</th>
+            <th scope="col">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @best_styles.each do |s| %>
+          <%= render s %>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div><b>Most active users</b></div>
+    <ol>
+    <% @most_active_users.each do |u| %>
+      <%= render u %>
+    <% end %>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div><b> Recent ratings</b> </div>
+    <ul>
+    <% @ratings.each do |r| %>
+      <%= render r %>
+    <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 
 <%= render @brewery %>
+<div>Established in <%= @brewery.year  %></div>
 <% if @brewery.ratings.empty? %>
   <p>this brewery haven't been rated yet...</p>
 <% else %>
@@ -7,6 +8,7 @@
 <% end %>
 <% if current_user %>
 <div>
+  <%= link_to "change activity", toggle_activity_brewery_path(@brewery.id), data: {turbo_method: "post"}, class: "btn btn-primary" %>
   <%= link_to "Edit this brewery", edit_brewery_path(@brewery) %> |
   <%= link_to "Back to breweries", breweries_path %>
 

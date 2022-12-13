@@ -1,18 +1,5 @@
-<div id="<%= dom_id brewery %>">
- <h3>
-  <%= brewery.name %>
-  <% if not brewery.active  %>
-    <span class="badge bg-secondary">retired</span>
-  <% end %>
-</h3>
-  <p>
-    <i>Established in </i>
-    <%= brewery.year %>
-  </p>
-  <p>Beers: <%=brewery.beers.count %></p>
-  <p>
-    <% brewery.beers.each do |beer| %>
-      <%= link_to beer.name, beer%>
-    <% end %>
-  </p>
-</div>
+<tr>
+  <td><%= link_to brewery.name, brewery%></td>
+  <td><%= round_number(brewery.average) %></td>
+</tr>
+

@@ -1,17 +1,5 @@
-<div id="<%= dom_id beer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= link_to beer.name, beer %>
-  </p>
+<tr>
+  <td><%= beer.name%></td>
+  <td><%= round_number(beer.average) %></td>
+</tr>
 
-  <p>
-    <strong>Style:</strong>
-    <%= beer.style %>
-  </p>
-
-  <p>
-    <strong>Brewery:</strong>
-    <%= link_to beer.brewery.name, beer%>
-  </p>
-  <hr>
-</div>

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   resources :styles
   resources :beer_clubs
-  resources :users
+  resources :users do
+     post 'toggle_enabled', on: :member
+  end
   resources :beers
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   root 'sessions#new'
   get 'kaikki_bisset', to: 'beers#index'
   resources :memberships, only: [:new, :create, :destroy]

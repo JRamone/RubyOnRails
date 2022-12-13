@@ -4,6 +4,14 @@
 <div id="users">
   <% @users.each do |user| %>
     <%= render user %>
+    <% if current_user %>
+    <% if current_user.admin %>
+      <%status = user.enabled ? 'enabled' : 'banned' %>
+      <div class="alert alert-primary" role="alert">
+        account is currently <%= status %>
+      </div>
+      <% end %>
+    <% end %>
     <p>
       <%= link_to "Show this user", user %>
     </p>

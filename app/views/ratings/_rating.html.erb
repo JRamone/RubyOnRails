@@ -1,4 +1,1 @@
-<div id="<%=dom_id rating%>"> 
-  <%="#{rating.beer.name} #{rating.score}" %>
-  <%= link_to rating.user.username, rating.user %>
-</div>
+<li><%="#{rating.beer.name}, #{rating.score}, rated by #{rating.user.username}, #{rating.created_at}" %></li>

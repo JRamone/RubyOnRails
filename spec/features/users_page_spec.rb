@@ -13,7 +13,7 @@ describe "User" do
   describe "who has signed up" do
 
     it "can signin with right credentials" do
-      expect(page).to have_content 'Welcome back!'
+      expect(page).to have_content "May the Beer be with you, #{user[:username]}"
       expect(page).to have_content user[:username]
     end
     

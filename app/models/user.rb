@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :beer_clubs, through: :memberships
   has_many :breweries, through: :beers
 
+  def self.most_active(num)
+    User.all.sort_by{ |u| u.ratings.count }.reverse.first num
+  end
+
   def favorite(groupped_by)
     return nil if ratings.empty?
 

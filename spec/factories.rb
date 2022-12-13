@@ -7,11 +7,13 @@ FactoryBot.define do
     username { generate :username }
     password { "Foobar1" }
     password_confirmation { "Foobar1" }
+    enabled { true }
   end
 
   factory :brewery do
     name { "anynymous" }
     year { 1990 }
+    active { true }
   end
   
   factory :style do

@@ -26,24 +26,28 @@ describe "Rating" do
     expect(beer1.average_rating).to eq(15.0)
   end
 
-  it 'total amount of ratings is displayed correctly' do
+  it 'most active users are displayed correctly' do
+    create_beer_with_rating({user: user}, 15)
+    create_beer_with_rating({user: user}, 30)
+    create_beer_with_rating({user: user}, 25)
     visit ratings_path
-
-    expect(page).to have_content("total of #{Rating.count} ratings.")
-    expect(Rating.count).to eq(0)
+    @most_active_users = User.most_active 3
+    @most_active_users.each do |user|
+      expect(page).to have_content("#{user.username} #{user.ratings.count} ratings")
+    end
+    expect(Rating.count).to eq(3)
   end
 
-  it 'each rating is displayed correctly' do
+  it 'recent ratings are displayed correctly' do
     create_beer_with_rating({user: user}, 15)
     create_beer_with_rating({user: user}, 30)
     create_beer_with_rating({user: user}, 25)
     visit ratings_path
 
-    @ratings = Rating.all
+    @ratings = Rating.recent
     @ratings.each do |rating|
-      expect(page).to have_content("#{rating.beer.name} #{rating.score} #{rating.user.username}")
+      expect(page).to have_content("#{rating.beer.name}, #{rating.score}, rated by #{rating.user.username}")
     end
-    expect(page).to have_content("total of #{Rating.count} ratings.")
     expect(Rating.count).to eq(3)
   end
 

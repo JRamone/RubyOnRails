@@ -6,9 +6,11 @@
 <p> Number of active breweries: <%= @active_breweries.count %> </p>
 
 <div id="breweries">
+  <table class="table table-hover">
   <% @active_breweries.each do |brewery| %>
     <%= render brewery %>
   <% end %>
+  </table>
 </div>
 
 <h2>Retired</h2>
@@ -16,9 +18,11 @@
 <p> Number of retired breweries: <%= @retired_breweries.count %> </p>
 
 <div id="retired_breweries">
+  <table class="table table-hover">
   <% @retired_breweries.each do |brewery| %>
     <%= render brewery %>
   <% end %>
+  </table>
 </div>
 </div>
 

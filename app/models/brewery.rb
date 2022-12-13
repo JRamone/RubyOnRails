@@ -11,6 +11,16 @@ class Brewery < ApplicationRecord
   scope :active, -> { where active: true }
   scope :retired, -> { where active: [nil, false] }
 
+  def self.best_rated(num)
+    Brewery.all.sort_by(&:average).reverse.first num
+  end
+
+  def average
+    return 0 if ratings.empty?
+
+    ratings.map(&:score).sum / ratings.count.to_f
+  end
+
   def year_cannot_be_in_the_future
     return unless year > Date.today.year
 
