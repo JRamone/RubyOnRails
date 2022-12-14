@@ -1,10 +1,22 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: %i[show edit update destroy]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit]
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :list]
   # GET /beers or /beers.json
   def index
     @beers = Beer.all
+
+    order = params[:order] || 'Name'
+
+    @beers = case order
+             when "Name" then @beers.sort_by(&:name)
+             when "Brewery" then @beers.sort_by{ |b| b.brewery.name }
+             when "Style" then @beers.sort_by{ |b| b.style.name }
+             when "Rating" then @beers.sort_by(&:average_rating).reverse
+             end
+  end
+
+  def list
   end
 
   # GET /beers/1 or /beers/1.json
@@ -75,6 +87,6 @@ class BeersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def beer_params
-    params.require(:beer).permit(:name, :style_id, :brewery_id)
+    params.require(:beer).permit(:name, :style_id, :brewery_id, :order)
   end
 end

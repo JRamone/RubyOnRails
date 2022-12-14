@@ -1,27 +1,17 @@
-
-<h1>Beer clubs</h1>
-
-<div id="beer_clubs">
-  <% @beer_clubs.each do |beer_club| %>
-    
-  <p>
-    <strong>Name:</strong>
-    <%= beer_club.name %>
-  </p>
-
-  <p>
-    <strong>Founded:</strong>
-    <%= beer_club.founded %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= beer_club.city %>
-  </p>
-    <p>
-      <%= link_to "Show this beer club", beer_club %>
-    </p>
-  <% end %>
-</div>
+<h1>Beer Clubs</h1>
+<div class="container">
+<table class="table">
+    <thead>
+      <tr>
+      <th><%= link_to "Name", beer_clubs_path(order: "Name")  %></th> 
+      <th><%= link_to "Founded", beer_clubs_path(order: "Founded")  %></th> 
+      <th><%= link_to "City", beer_clubs_path(order: "City")  %></th> 
+      <tr>
+    </thead>
+    <% @beer_clubs.each do |c| %>
+      <%= render c %>
+    <% end %>
+</table>
 
 <%= link_to("New beer club", new_beer_club_path, class:'btn btn-primary') if current_user %>
+</div>

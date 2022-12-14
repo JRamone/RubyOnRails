@@ -19,8 +19,12 @@ Rails.application.routes.draw do
 
   resources :places, only: [:index, :show]
   post 'places', to: 'places#search'
+  get 'beerlist', to: 'beers#list'
+  get 'brewerylist', to: 'breweries#list'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+  #
+
 end

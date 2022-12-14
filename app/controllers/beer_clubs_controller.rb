@@ -5,6 +5,14 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs or /beer_clubs.json
   def index
     @beer_clubs = BeerClub.all
+
+    order = params[:order] || 'Name'
+
+    @beer_clubs = case order
+                  when "Name" then @beer_clubs.sort_by(&:name)
+                  when "Founded" then @beer_clubs.sort_by(&:founded)
+                  when "City" then @beer_clubs.sort_by(&:city)
+                  end
   end
 
   # GET /beer_clubs/1 or /beer_clubs/1.json

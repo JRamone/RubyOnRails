@@ -1,19 +1,21 @@
 
 <h1>Beers</h1>
 <div id="beers">
-  <table class="table table-hover">
-    <tr>
-      <th>Beer</th> 
-      <th>Style</th> 
-      <th>Brewery</th> 
-      <th>Rating</th> 
-    </tr>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+      <th><%= link_to "Name", beers_path(order: "Name")  %></th> 
+      <th><%= link_to "Style", beers_path(order: "Style")  %></th> 
+      <th><%= link_to "Brewery", beers_path(order: "Brewery")  %></th> 
+      <th><%= link_to "Rating", beers_path(order: "Rating")  %></th> 
+      <tr>
+    </thead>
     <% @beers.each do |beer| %>
     <tr>
       <td><%= link_to beer.name, beer %></td>
       <td><%= link_to beer.style, beer.style %></td>
       <td><%= link_to beer.brewery, beer.brewery %></td>
-      <td><%= beer.average %></td>
+      <td><%= round_number(beer.average)%></td>
     </tr>
     <% end %>
   </table>
