@@ -3,12 +3,15 @@ require 'rails_helper'
 describe "Beerlist page" do
   before :all do
     Capybara.register_driver :chrome do |app|
+      options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless])
       Capybara::Selenium::Driver.new app, browser: :chrome,
-        options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
+        options: options
     end
 
     Capybara.javascript_driver = :chrome
-    WebMock.disable_net_connect!(allow_localhost: true)
+    #WebMock.disable_net_connect!(allow_localhost: true)
+    WebMock.allow_net_connect!
+
   end
   before :each do
     @brewery1 = FactoryBot.create(:brewery, name: "Koff")

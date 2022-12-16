@@ -4,8 +4,8 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :raters, -> { distinct }, through: :ratings, source: :user
   belongs_to :style
-  belongs_to :brewery, touch: true 
-  
+  belongs_to :brewery, touch: true
+
   validates :name, presence: true
 
   def self.best_rated(num)
