@@ -7,15 +7,15 @@ class BeersController < ApplicationController
   def index
     @order = params[:order] || 'Name'
     return if request.format.html? && fragment_exist?("beerlist-#{@order}")
+    @beers = Beer.all
+    #@beers = Beer.includes(:brewery, :style, :ratings).all
 
-    @beers = Beer.includes(:brewery, :style, :ratings).all
-
-    @beers = case @order
-             when "Name" then @beers.sort_by(&:name)
-             when "Brewery" then @beers.sort_by{ |b| b.brewery.name }
-             when "Style" then @beers.sort_by{ |b| b.style.name }
-             when "Rating" then @beers.sort_by(&:average_rating).reverse
-             end
+    #@beers = case @order
+    #         when "Name" then @beers.sort_by(&:name)
+    #         when "Brewery" then @beers.sort_by{ |b| b.brewery.name }
+    #         when "Style" then @beers.sort_by{ |b| b.style.name }
+    #         when "Rating" then @beers.sort_by(&:average_rating).reverse
+    #         end
   end
 
   def list
