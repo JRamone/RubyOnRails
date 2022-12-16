@@ -4,8 +4,8 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :raters, -> { distinct }, through: :ratings, source: :user
   belongs_to :style
-  belongs_to :brewery
-
+  belongs_to :brewery, touch: true 
+  
   validates :name, presence: true
 
   def self.best_rated(num)
@@ -13,9 +13,10 @@ class Beer < ApplicationRecord
   end
 
   def average
-    return 0 if ratings.empty?
+    rating_count = ratings.size
+    return 0 if rating_count == 0
 
-    ratings.map(&:score).sum / ratings.count.to_f
+    ratings.map(&:score).sum / rating_count
   end
 
   def to_s

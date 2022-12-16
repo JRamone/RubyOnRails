@@ -1,7 +1,15 @@
 
 <%= render @beer %>
+<% cache @beer do %>
+<% if @beer.ratings.empty? %>
+  <p>this beer haven't been rated yet...</p>
+<% else %>
+  <p> Beer has <%=pluralize(@beer.ratings.count, "rating")%> with an average of <%= @beer.average_rating %> </p>
+<% end %>
+<% end %>
 
 <% if current_user %>
+
   <h4>Give a rating:</h4>
 
   <%= form_with(model: @rating) do |form| %>
@@ -11,11 +19,6 @@
   <% end %>
 <% end %>
 
-<% if @beer.ratings.empty? %>
-  <p>this beer haven't been rated yet...</p>
-<% else %>
-  <p> Beer has <%=pluralize(@beer.ratings.count, "rating")%> with an average of <%= @beer.average_rating %> </p>
-<% end %>
 
 <div>
   <%= link_to("Edit this beer", edit_beer_path(@beer), class:'btn btn-primary')%> 

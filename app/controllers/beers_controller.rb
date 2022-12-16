@@ -2,13 +2,15 @@ class BeersController < ApplicationController
   before_action :set_beer, only: %i[show edit update destroy]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit]
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
+  before_action :expire_fragments, only: [:create, :update, :destroy]
   # GET /beers or /beers.json
   def index
-    @beers = Beer.all
+    @order = params[:order] || 'Name'
+    return if request.format.html? && fragment_exist?("beerlist-#{@order}")
+    @beers = Beer.includes(:brewery, :style, :ratings).all
 
-    order = params[:order] || 'Name'
 
-    @beers = case order
+    @beers = case @order
              when "Name" then @beers.sort_by(&:name)
              when "Brewery" then @beers.sort_by{ |b| b.brewery.name }
              when "Style" then @beers.sort_by{ |b| b.style.name }
@@ -36,6 +38,7 @@ class BeersController < ApplicationController
 
   # POST /beers or /beers.json
   def create
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     @beer = Beer.new(beer_params)
 
     respond_to do |format|
@@ -52,6 +55,7 @@ class BeersController < ApplicationController
 
   # PATCH/PUT /beers/1 or /beers/1.json
   def update
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     respond_to do |format|
       if @beer.update(beer_params)
         format.html { redirect_to beer_url(@beer), notice: "Beer was successfully updated." }
@@ -65,6 +69,7 @@ class BeersController < ApplicationController
 
   # DELETE /beers/1 or /beers/1.json
   def destroy
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     @beer.destroy
 
     respond_to do |format|
@@ -83,6 +88,10 @@ class BeersController < ApplicationController
   def set_breweries_and_styles_for_template
     @breweries = Brewery.all
     @styles = Style.all
+  end
+
+  def expire_fragments
+    expire_fragment('brewerieslist')
   end
 
   # Only allow a list of trusted parameters through.

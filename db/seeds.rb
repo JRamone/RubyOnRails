@@ -1,23 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-b1 = Brewery.create name: "Koff", year: 1897
-b2 = Brewery.create name: "Malmgard", year: 2001
-b3 = Brewery.create name: "Weihenstephaner", year: 1040
+# jos koneesi on nopea, voit myös kasvattaa ao lukuja
+users = 50             
+breweries = 50
+beers_in_brewery = 50
+ratings_per_user = 30
 
-s1 = Style.create name: "Watery", description: "Tastes like water. Yum."
-s2 = Style.create name: "Pale Ale", description: "Characterized by floral, fruity, citrus-like, piney, resinous American hops, the American pale ale is a medium-bodied beer with low to medium caramel, and carries with it a toasted maltiness."
+(1..users).each do |i|
+  User.create! username: "user_#{i}", password: "Passwd1", password_confirmation: "Passwd1"
+end
 
+(1..breweries).each do |i|
+  Brewery.create! name: "Brewery_#{i}", year: 1900, active: true
+end
 
+bulk = Style.create! name: "Bulk", description: "cheap, not much taste"
 
-b1.beers.create name: "Iso 3", style: s1
-b1.beers.create name: "Karhu", style: s1
-b1.beers.create name: "Tuplahumala", style: s2
-b2.beers.create name: "Huvila Pale Ale", style: s2
-b2.beers.create name: "X Porter", style: s1
-b3.beers.create name: "Hefeweizen", style: s2
-b3.beers.create name: "Helles", style: s2
+Brewery.all.each do |b|
+  n = rand(beers_in_brewery)
+  (1..n).each do |i|
+    beer = Beer.create! name: "Beer #{b.id} -- #{i}", style: bulk, brewery: b
+    b.beers << beer
+  end
+end
+
+User.all.each do |u|
+  n = rand(ratings_per_user)
+  beers = Beer.all.shuffle
+  (1..n).each do |i|
+    r = Rating.new score:(1+rand(50))
+    beers[i].ratings << r
+    u.ratings << r
+  end
+end

@@ -10,11 +10,16 @@ gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
 # HTTP request and such
 gem 'httparty'
+# Miniprofiler to easier log reading
+gem 'rack-mini-profiler'
 
 #Bootstrap
 gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
 gem 'mini_racer'
+
+# Cron-tab-ish
+gem 'sucker_punch', '~> 3.0'
 
 gem 'bcrypt','~> 3.1.11' 
 group :development, :test do

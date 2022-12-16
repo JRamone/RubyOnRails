@@ -33,5 +33,21 @@ describe "Beerlist page" do
     find('#beerlist').find('tr:nth-child(2)').assert_text('Lechte Weisse')
     find('#beerlist').find('tr:nth-child(3)').assert_text('Nikolai')
   end
+  
+  it "ordering by style works correctly", :js => true do
+    visit beerlist_path
+    find('#style').click
+    find('#beerlist').find('tr:nth-child(1)').assert_text('Lager')
+    find('#beerlist').find('tr:nth-child(2)').assert_text('Rauchbier')
+    find('#beerlist').find('tr:nth-child(3)').assert_text('Weizen')
+  end
+
+  it "ordering by brewery works correctly", :js => true do
+    visit beerlist_path
+    find('#brewery').click
+    find('#beerlist').find('tr:nth-child(1)').assert_text('Ayinger')
+    find('#beerlist').find('tr:nth-child(2)').assert_text('Koff')
+    find('#beerlist').find('tr:nth-child(3)').assert_text('Schlenkerla')
+  end
 
 end

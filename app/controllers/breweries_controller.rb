@@ -1,6 +1,7 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
+  before_action :expire_fragments, only: [:create, :update, :destroy]
 
   def toggle_activity
     brewery = Brewery.find(params[:id])
@@ -16,6 +17,7 @@ class BreweriesController < ApplicationController
 
   # GET /breweries or /breweries.json
   def index
+    return if request.format.html? && fragment_exist?('brewerylist')
     @breweries = Brewery.all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
@@ -86,6 +88,10 @@ class BreweriesController < ApplicationController
 
       return true
     end
+  end
+  
+  def expire_fragments
+    expire_fragment('brewerylist')
   end
 
   # Only allow a list of trusted parameters through.
