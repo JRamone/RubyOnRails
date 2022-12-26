@@ -5,7 +5,6 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs or /beer_clubs.json
   def index
     @beer_clubs = BeerClub.all
-
     order = params[:order] || 'Name'
 
     @beer_clubs = case order
