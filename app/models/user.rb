@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  
   include RatingAverage
 
   has_secure_password
+  
+  has_one_attached :avatar
 
   validates :username, uniqueness: true
   validates :username, length: { minimum: 3,

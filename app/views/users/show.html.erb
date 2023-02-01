@@ -1,5 +1,10 @@
 
 <div>
+  <% if @user.avatar.attached? %>
+  <div>
+    <%= image_tag @user.avatar.url %>
+  </div>
+<% end %>
   <h2><b>Username:</b></h2>
   <p> <%= @user.username %></p>
   <p> Has made <%= @user.ratings.count %> ratings, average rating <%= @user.average_rating %> </p>
