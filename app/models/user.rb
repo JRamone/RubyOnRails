@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :beers, through: :ratings
   has_many :beer_clubs, through: :memberships
   has_many :breweries, through: :beers
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
 
   def self.most_active(num)
     User.all.sort_by{ |u| u.ratings.count }.reverse.first num
@@ -50,4 +52,9 @@ class User < ApplicationRecord
   def average_of(ratings)
     ratings.sum(&:score).to_f / ratings.count
   end
+
+  def to_s
+    username
+  end
+
 end

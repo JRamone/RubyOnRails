@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
 
-  has_one :sender, foreign_key: :sender_id
-  has_one :receiver, dependent: :destroy, foreign_key: :receiver_id
+  belongs_to :sender, class_name: 'User'
+  belongs_to :receiver, class_name: 'User'
 
   validates :message_field, presence: true
 

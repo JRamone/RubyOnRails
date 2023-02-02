@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post 'places', to: 'places#search'
   get 'beerlist', to: 'beers#list'
   get 'brewerylist', to: 'breweries#list'
+  get 'messages', to: 'messages#index'
+  post 'messages', to: 'messages#create'
+  resources :messages
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
