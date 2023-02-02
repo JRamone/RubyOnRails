@@ -8,6 +8,7 @@ FactoryBot.define do
     password { "Foobar1" }
     password_confirmation { "Foobar1" }
     enabled { true }
+    avatar { nil }
   end
 
   factory :brewery do
