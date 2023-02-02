@@ -12,8 +12,6 @@ module Ratebeer
     config.load_defaults 7.0
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
-    config.active_record.schema_format = :sql
-
 
     # Configuration for the application, engines, and railties goes here.
     #
