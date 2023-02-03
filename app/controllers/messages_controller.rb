@@ -3,9 +3,8 @@ class MessagesController < ApplicationController
   before_action :set_messages, only: %i[index show edit update destroy]
 
   def index
-    @users = User.all.select { |u| u.id != current_user.id }
+    @users = User.all.reject { |u| u.id == current_user.id }
   end
-
 
   def show
   end
@@ -34,9 +33,10 @@ class MessagesController < ApplicationController
   private
 
   def ensure_login
-    if not current_user
+    return if current_user
+
     respond_to do |f|
-     f.html { redirect_to root_path, notice: "Please login to view your messages." }
+      f.html { redirect_to root_path, notice: "Please login to view your messages." }
     end
   end
 
@@ -46,7 +46,6 @@ class MessagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def message_params
-    params.permit(:message_field,:title,:receiver_id)
+    params.permit(:message_field, :title, :receiver_id)
   end
-end
 end
