@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 4 }
   validates :password, format: { with: /[A-Z]/, message: "must contain atleast one capital letter." }
   validates :password, format: { with: /[0-9]/, message: "must contain atleast one number." }
+  validates :avatar, content_type: 'image/jpeg'
 
   has_many :memberships, dependent: :destroy
   has_many :ratings, dependent: :destroy

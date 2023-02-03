@@ -18,6 +18,9 @@ gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
 gem 'mini_racer'
 
+#ActiveStorageValidations
+gem 'active_storage_validations'
+
 # Cron-tab-ish
 gem 'sucker_punch', '~> 3.0'
 
